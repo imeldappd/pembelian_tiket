@@ -1,0 +1,65 @@
+extends ../layout/base
+block content
+    section.content-header
+        h1
+            | Add Customer
+            small it all starts here
+        ol.breadcrumb
+            li
+                a(href='#')
+                    i.fa.fa-dashboard
+                    | Level
+                li.active Here
+    section.content
+        .box
+            .box-header.with-border
+                h3.box-title
+                    | Pembelian Tiket
+                .box-tools.pull-right
+                    button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+                        i.fa.fa-minus
+
+            .box-body
+                form(role='form',method='post' action='/customers/add' enctype="multipart/form-data")
+                    .row
+
+                        .col-xs-6
+                            .box-body
+                                - if (messages.msg_error)
+                                    .alert.alert-danger.alert-dismissable
+                                        button.close(type='button', data-dismiss='alert', aria-hidden='true')
+                                            | ×
+                                        h4
+                                            i.icon.fa.fa-ban
+                                            | Alert!
+                                        | !{messages.msg_error}
+                                .form-group
+                                    label
+                                        | Judul
+                                    input(type='text',value='#{judul}',name='judul',placeholder='Enter Judul', autofocus, required).form-control
+                                .form-group
+                                    label
+                                        | Waktu
+                                    input(type='text',value='#{waktu}',name='waktu',placeholder='Enter Waktu', autofocus, required).form-control
+                                .form-group
+                                    label
+                                        | Studio
+                                    input(type='text',name='studio',placeholder='Enter studio').form-control
+                                .form-group
+                                    label
+                                        | Kursi
+                                    input(type='text',value='#{kursi}',name='kursi',placeholder='Enter studio', required).form-control
+                                .form-group
+                                    label
+                                        | Harga
+                                    input(type='text',name='harga',placeholder='Enter Harga', required).form-control
+                                .form-group
+                                    label
+                                        | Gambar
+                                    input(type='file',name='gambar',placeholder='Masukan Gambar', required).form-control
+                            .box-footer
+                                button(type='submit').btn.btn-primary
+                                    | Submit
+
+                                a(href='/customers').btn.btn-primary.pull-right
+                                    | Back
